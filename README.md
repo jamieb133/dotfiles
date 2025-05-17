@@ -8,3 +8,8 @@ git submodule update --init
 # Create symlinks from here to HOME
 sh install.sh
 ```
+
+Manually install these packages:
+```
+-- ripgrep (nvim telescope live grep)
+```
