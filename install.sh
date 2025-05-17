@@ -1,7 +1,7 @@
 #!/bin/bash
 
 dotfiles_dir="$HOME/dotfiles"
-backup_dir="$HOME/dotfiles_backup_$(date +%Y%m%d_%H%M%S)"
+backup_dir="$HOME/dotfiles_backups/$(date +%Y%m%d_%H%M%S)"
 
 # Create a backup directory
 mkdir -p "$backup_dir"
@@ -9,6 +9,8 @@ mkdir -p "$backup_dir"
 # List of files/directories to symlink (relative to dotfiles_dir)
 files=(
     ".zshrc"
+    ".tmux.conf"
+    ".tmux"
 )
 
 for file in "${files[@]}"; do
