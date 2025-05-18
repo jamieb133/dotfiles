@@ -1,15 +1,8 @@
 ### Notes to self
 
-To install:
+Run the bootstrap script which will automatically install homebrew and the required packages before cloning this repo and running the install script.
+Downloads the Brewfile including necessary dependencies e.g. git which it needs to continue the install. Any new required packages should be added to this file.
 ```
-# Clone any required stuff from git (e.g. TMUX plugin manager etc)
-git submodule update --init
-
-# Create symlinks from here to HOME
-sh install.sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/jamieb133/dotfiles/refs/heads/main/bootstrap.sh)"
 ```
 
-Install homebrew packages:
-```
-brew bundle
-```
