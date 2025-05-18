@@ -9,7 +9,7 @@ git submodule update --init
 sh install.sh
 ```
 
-Manually install these packages:
+Install homebrew packages:
 ```
--- ripgrep (nvim telescope live grep)
+brew bundle
 ```

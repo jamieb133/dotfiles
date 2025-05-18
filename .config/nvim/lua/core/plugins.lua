@@ -16,11 +16,19 @@ return require('packer').startup(function(use)
   use 'ellisonleao/gruvbox.nvim' -- Theme
   use 'nvim-lualine/lualine.nvim' -- Status line
   use 'nvim-treesitter/nvim-treesitter' -- Syntax Highlighting
+  use 'nvim-tree/nvim-tree.lua' -- File explorer
   use {
-    'nvim-telescope/telescope.nvim', -- Fizzy Finder
+    'nvim-telescope/telescope.nvim', -- Fuzzy Finder
     tag = '0.1.8',
     requires = { { 'nvim-lua/plenary.nvim' } }
   }
+  use {
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
+  }
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-nvim-lsp'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
