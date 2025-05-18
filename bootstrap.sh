@@ -19,6 +19,9 @@ curl -O https://raw.githubusercontent.com/jamieb133/dotfiles/refs/heads/main/Bre
 brew bundle
 rm Brewfile
 
+# Set git username and email
+python3 git_user.py
+
 # Download and install the stuff
 git clone git@github.com:jamieb133/dotfiles.git
 cd dotfiles

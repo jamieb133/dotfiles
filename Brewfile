@@ -5,6 +5,7 @@ brew "neovim"
 brew "node"
 brew "cmake"
 brew "mas"
+brew "python"
 
 # Install GUI apps
 cask "font-fira-code-nerd-font"
