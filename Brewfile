@@ -3,6 +3,8 @@ brew "git"
 brew "tmux"
 brew "neovim"
 brew "node"
+brew "cmake"
+brew "mas"
 
 # Install GUI apps
 cask "font-fira-code-nerd-font"

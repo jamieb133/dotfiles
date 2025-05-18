@@ -6,3 +6,5 @@ Downloads the Brewfile including necessary dependencies e.g. git which it needs 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/jamieb133/dotfiles/refs/heads/main/bootstrap.sh)"
 ```
 
+Installing xcode via mas seems to take FOREVER so just install this manually if needed.
+
