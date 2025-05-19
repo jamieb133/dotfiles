@@ -5,19 +5,19 @@
 # Do this within the HOME directory
 cd $HOME
 
-if command -v brew &> /dev/null
-then
-    echo "Homebrew is installed."
-    brew --version
-else
-    echo "Homebrew is not installed, installing now."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-fi
-
 if [ "$OS" = "Linux" ]; then
     echo "Installing python and git on Linux"
     apt install python3 git
 elif [ "$OS" = "Darwin" ]; then
+    if command -v brew &> /dev/null
+    then
+        echo "Homebrew is installed."
+        brew --version
+    else
+        echo "Homebrew is not installed, installing now."
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    fi
+
     echo "Installing python and git on MacOS"
     brew install python3 git
 else 

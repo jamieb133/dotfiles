@@ -1,6 +1,6 @@
 ## Notes To Self (readme I guess...)
 
-Two methods, run one commmand, or install a few things manually then run another script.
+Two methods, run one command, or install a few things manually then run another script.
 
 ### Single Script
 Not much benefit doing this step on Linux if using a standard debian distro, all the minimal stuff is pre-installed.
