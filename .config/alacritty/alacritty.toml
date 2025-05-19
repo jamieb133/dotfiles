@@ -1,0 +1,5 @@
+[font]
+normal = { family = "VictorMonoNerdFontMono", style = "Medium" }
+bold = { family = "VictorMonoNerdFontMono", style = "Bold" }
+italic = { family = "VictorMonoNerdFontMono", style = "Oblique" }
+size = 14.0

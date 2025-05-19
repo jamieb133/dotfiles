@@ -7,9 +7,25 @@ local on_attach = function(_, _)
 end
 
 local has_words_before = function()
-    unpack = unpack or table.unpack
+    -- Check if the line is empty or if the cursor is at the very beginning
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+    if col == 0 then
+        return false
+    end
+
+    local current_line_text = vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]
+
+    -- Check if the line is empty after the cursor
+    if col >= #current_line_text then
+        return false
+    end
+
+    -- Adjust column for 1-based indexing for string manipulation
+    local char_before_cursor = current_line_text:sub(col, col)
+
+    -- Check if the character before the cursor is NOT a whitespace character
+    -- We use `find` here which is more robust than `match` for this purpose
+    return char_before_cursor:find("%S") ~= nil
 end
 
 -- Essential for nvim-cmp integration

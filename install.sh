@@ -2,6 +2,7 @@
 
 dotfiles_dir="$HOME/dotfiles"
 backup_dir="$HOME/dotfiles_backups/$(date +%Y%m%d_%H%M%S)"
+OS=$(uname -s)
 
 # Create a backup directory
 mkdir -p "$backup_dir"
@@ -11,8 +12,27 @@ files=(
     ".zshrc"
     ".tmux.conf"
     ".tmux"
-    ".config"
+    ".oh-my-zsh"
+    ".config/nvim"
+    ".config/alacritty"
 )
+
+# Install packages
+if [ "$OS" = "Linux" ]; then
+    sh apt_install_packages.sh
+    
+    # Need a newer version of neovim that that provided by apt-get at the mo
+    echo "Manually downloading/extracting neovim v0.11.1"
+    wget https://github.com/neovim/neovim/releases/download/v0.11.1/nvim-linux-x86_64.appimage
+    chmod u+x nvim-linux-x86_64.appimage
+    mkdir -p ~/.local/bin/
+    mv nvim-linux-x86_64.appimage ~/.local/bin/nvim
+elif [ "$OS" = "Darwin" ]; then
+    brew bundle
+else 
+    echo "ERROR! Unknown system type -- $OS"
+    exit 1
+fi
 
 for file in "${files[@]}"; do
     source_path="$dotfiles_dir/$file"

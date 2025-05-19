@@ -8,6 +8,7 @@ vim.opt.autowrite = true
 vim.opt.cursorline = true
 vim.opt.autoread = true
 vim.opt.relativenumber = true
+vim.opt.number = true
 vim.opt.clipboard = 'unnamedplus' -- Use system clipboard
     
 vim.opt.tabstop = 4

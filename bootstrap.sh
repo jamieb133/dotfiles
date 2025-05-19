@@ -14,10 +14,16 @@ else
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-# Download the list of package dependencies and install them
-curl -O https://raw.githubusercontent.com/jamieb133/dotfiles/refs/heads/main/Brewfile
-brew bundle
-rm Brewfile
+if [ "$OS" = "Linux" ]; then
+    echo "Installing python and git on Linux"
+    apt install python3 git
+elif [ "$OS" = "Darwin" ]; then
+    echo "Installing python and git on MacOS"
+    brew install python3 git
+else 
+    echo "ERROR! Unknown system type -- $OS"
+    exit 1
+fi
 
 # Set git username and email
 python3 git_user.py
@@ -26,5 +32,5 @@ python3 git_user.py
 git clone git@github.com:jamieb133/dotfiles.git
 cd dotfiles
 git submodule update --init
-sh install.sh
+bash install.sh
 
