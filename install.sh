@@ -34,6 +34,10 @@ else
     exit 1
 fi
 
+# Install go packages
+go install golang.org/x/tools/gopls@latest
+go install github.com/air-verse/air@latest
+
 for file in "${files[@]}"; do
     source_path="$dotfiles_dir/$file"
     target_path="$HOME/$file"
