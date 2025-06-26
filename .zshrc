@@ -104,5 +104,14 @@ source $ZSH/oh-my-zsh.sh
 export PATH="$PATH:$HOME/.local/bin:$HOME/go/bin"
 
 # More explicit paths
-export PATH="$PATH:$HOME/tools/dotnet_sdk"
-export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
+if [ "$OS" = "Linux" ]; then
+    export PATH="$PATH:$HOME/tools/dotnet_sdk"
+    export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
+else 
+    echo "MAC!!!"
+    export JAVA_HOME="/Library/Java/JavaVirtualMachines/microsoft-21.jdk/Contents/Home"
+    export ANDROID_HOME="$HOME/Library/Android/sdk"
+    export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"
+fi
+
+

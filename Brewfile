@@ -11,4 +11,5 @@ brew "python"
 cask "font-fira-code-nerd-font"
 cask "font-jetbrains-mono-nerd-font"
 cask "font-meslo-lg-nerd-font"
-
+cask "microsoft-openjdk"
+cask "ghostty"

@@ -1,3 +1,38 @@
+vim.diagnostic.config({
+    -- This is the crucial part for showing text directly on the line
+    virtual_text = {
+        enabled = true,
+        -- You can choose the format. 'text' often looks cleaner.
+        -- 'prefix' adds a symbol like '•' before the message.
+        -- 'separator' is the string between prefix and message.
+        -- Example:
+        -- prefix = '•',
+        -- separator = ' ',
+        -- severity = { min = vim.diagnostic.severity.HINT }, -- Show all levels
+    },
+    -- Show signs (the icons in the sign column like W, E)
+    signs = {
+        enabled = true,
+        -- You can customize the signs if you want
+        -- like: text = { [vim.diagnostic.severity.ERROR] = 'E', ... }
+    },
+    -- Underline the problematic text
+    underline = true,
+    -- Configure the behavior of floating windows when diagnostics are hovered
+    float = {
+        -- Set to true to show the float automatically when hovering
+        -- (this is useful to see full messages)
+        focusable = false,
+        style = "minimal",
+        border = "rounded",
+        source = "always",
+        header = "",
+        prefix = "",
+    },
+    -- Set to false to disable diagnostics in insert mode (can be distracting)
+    update_in_insert = false,
+})
+
 -- Set keybindings for jump to def, hover etc
 local on_attach = function(_, _)
     vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {})
@@ -37,7 +72,12 @@ local cmp = require('cmp')
 local lspconfig = require('lspconfig')
 local luasnip = require('luasnip')
 
-mason.setup()
+mason.setup({
+    registries = {
+        "github:mason-org/mason-registry",
+        "github:Crashdummyy/mason-registry",
+    }
+})
 
 mason_lspconfig.setup({
     ensure_installed = {

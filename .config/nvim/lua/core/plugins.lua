@@ -14,6 +14,7 @@ local packer_bootstrap = ensure_packer()
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'ellisonleao/gruvbox.nvim' -- Theme
+  use "rebelot/kanagawa.nvim" -- Theme
   use 'nvim-lualine/lualine.nvim' -- Status line
   use 'nvim-treesitter/nvim-treesitter' -- Syntax Highlighting
   use 'nvim-tree/nvim-tree.lua' -- File explorer
@@ -30,6 +31,7 @@ return require('packer').startup(function(use)
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'L3MON4D3/LuaSnip'
+  use 'seblyng/roslyn.nvim'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
