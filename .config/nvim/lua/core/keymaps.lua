@@ -18,4 +18,7 @@ vim.opt.expandtab = true
 
 vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
 vim.keymap.set('n', '<leader>ee', ':Ex<CR>')
+vim.keymap.set('n', '<leader>sp', ':vsplit<CR><C-w>l', { noremap = true, silent = false })
+vim.keymap.set('n', '<leader>qq', ':q<CR>', { noremap = true, silent = false })
+vim.keymap.set('n', '<leader>ww', ':w<CR>', { noremap = true, silent = false })
 
