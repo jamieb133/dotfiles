@@ -16,7 +16,12 @@ return require('packer').startup(function(use)
   use 'ellisonleao/gruvbox.nvim' -- Theme
   use "rebelot/kanagawa.nvim" -- Theme
   use 'nvim-lualine/lualine.nvim' -- Status line
-  use 'nvim-treesitter/nvim-treesitter' -- Syntax Highlighting
+  use {
+      'nvim-treesitter/nvim-treesitter', -- Syntax Highlighting
+      tag = 'v0.10.0', -- Newest version breaks telescope
+      lazy = false,
+      build = ':TSUpdate',
+  }
   use 'nvim-tree/nvim-tree.lua' -- File explorer
   use {
     'nvim-telescope/telescope.nvim', -- Fuzzy Finder

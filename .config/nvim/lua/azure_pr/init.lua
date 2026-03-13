@@ -212,6 +212,8 @@ function M.setup(opts)
     if opts.pr_id then
         M.load_pr(opts.pr_id)
     end
+
+    print(config.pat)
 end
 
 function M.load_pr(pr_id)

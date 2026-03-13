@@ -39,6 +39,7 @@ local on_attach = function(_, _)
     vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, {})
     vim.keymap.set('n', '<leader>gi', vim.lsp.buf.implementation, {})
     vim.keymap.set('n', '<leader>K', vim.lsp.buf.hover, {})
+    vim.keymap.set('n', '<leader>gb', '<C-o>', {})
 end
 
 local has_words_before = function()
@@ -69,7 +70,6 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local mason = require('mason')
 local mason_lspconfig = require('mason-lspconfig')
 local cmp = require('cmp')
-local lspconfig = require('lspconfig')
 local luasnip = require('luasnip')
 
 mason.setup({
@@ -81,12 +81,8 @@ mason.setup({
 
 mason_lspconfig.setup({
     ensure_installed = {
-        "gopls",
         "clangd",
-        "ts_ls",
         "pyright",
-        "htmx",
-        "html",
     }
 })
 
@@ -120,74 +116,12 @@ cmp.setup({
       }),
 })
 
-lspconfig.html.setup {
+vim.lsp.config('clangd', {
     on_attach = on_attach,
     capabilities = capabilities,
-    settings = {
-        -- Settings here
-    }
-}
-lspconfig.htmx.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    settings = {
-        -- Settings here
-    }
-}
-
-lspconfig.gopls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    settings = {
-        gopls = {
-            analyses = {
-                unusedparams = true,
-            },
-            staticcheck = true,
-            gofumpt = true,
-        },
-    },
-}
-
-lspconfig.clangd.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
-
-lspconfig.ts_ls.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-    settings = {
-        javascript = {
-            inlayHints = {
-                includeInlayParameterNameHints = "all",
-                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-                includeInlayVariableTypeHints = true,
-                includeInlayPropertyDeclarationTypeHints = true,
-                includeInlayFunctionParameterTypeHints = true,
-                includeInlayFunctionLikeReturnTypeHints = true,
-                includeInlayEnumMemberValueHints = true,
-            },
-        },
-        typescript = {
-             inlayHints = {
-                includeInlayParameterNameHints = "all",
-                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-                includeInlayVariableTypeHints = true,
-                includeInlayPropertyDeclarationTypeHints = true,
-                includeInlayFunctionParameterTypeHints = true,
-                includeInlayFunctionLikeReturnTypeHints = true,
-                includeInlayEnumMemberValueHints = true,
-            },
-        },
-        completions = {
-            completeFunctionCalls = true,
-        },
-    },
-    filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact", "json" },
 })
 
-lspconfig.pyright.setup({
+vim.lsp.config('pyright', {
     on_attach = on_attach,
     capabilities = capabilities,
     settings = {
@@ -196,7 +130,7 @@ lspconfig.pyright.setup({
                 -- Set your Python interpreter path
                 -- If not set, Pyright will try to discover it
                 -- If you use virtual environments, you might not need this if Pyright can find it.
-                -- interpreter = '/usr/bin/python3', # Example: explicit path
+                interpreter = '/usr/bin/python3', 
 
                 -- Enable or disable specific diagnostic checks
                 diagnosticSeverityOverrides = {

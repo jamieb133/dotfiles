@@ -1,4 +1,4 @@
-require'nvim-treesitter.configs'.setup {
+require'nvim-treesitter'.setup {
     -- Required languages
     ensure_installed = {
         "lua",
@@ -6,27 +6,13 @@ require'nvim-treesitter.configs'.setup {
         "bash",
         "c",
         "cpp",
-        "c_sharp",
         "cmake",
         "css",
         "csv",
-        "doxygen",
-        "gitignore",
-        "rust",
-        "html",
-        "jinja",
         "json",
-        "make",
         "ninja",
-        "objdump",
-        "odin",
         "powershell",
         "python",
-        "sql",
-        "javascript",
-        "typescript",
-        "zig",
-        "xml"
     },
 
     sync_install = false,

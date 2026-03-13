@@ -2,10 +2,20 @@ local builtin = require('telescope.builtin')
 local telescope = require('telescope')
 
 telescope.setup {
+    defaults = {
+        mappings = {
+            i = {
+                ["<C-h>"] = "which_key"
+            }
+        }
+    },
     pickers = {
         find_files = {
             hidden = true
         }
+    },
+    extensions = {
+
     }
 }
 
